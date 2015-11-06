@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div id="banner" class="row">
+	<div class="col-xs-1 col-md-1"></div>
+	<div class="col-xs-5 col-md-5 text-center">
+		<h1>Item Categories</h1>
+		{% if 'username' in session %}
+			<a class="btn btn-default" href="{{url_for('newCategory')}}">
+				<span class="glyphicon-plus" aria-hidden="true"></span>
+				Add Category
+			</a>
+		{% else %}
+			<p class="help-block">Login to create new categories.</p>
+		{% endif %}
+	</div>
+	<div class="col-xs-5 col-md-5">
+		<img src="{{ url_for('static', filename='drawers.png') }}" class="img-responsive center-block">
+	</div>
+	<div class="col-xs-1 col-md-1"></div>
+</div>
+
+<div class="row top-buffer">
+	<div class="col-xs-1 col-md-1"></div>
+	<div class="col-xs-10 col-md-10 list-group">
+		<a class="list-group-item active">
+			<span class="badge" aria-hidden="true">Creator</span>
+			Category
+		</a>
+		{% for c in categories %}
+			<a class="list-group-item" href="{{url_for('showCategory', category_name = c.name)}}">
+				<span class="badge" aria-hidden="true">{{ c.user.name }}</span>
+				{{ c.name }}
+			</a>
+		{% endfor %}
+	</div>
+	<div class="col-xs-1 col-md-1"></div>
+</div>
+
+{% endblock %}

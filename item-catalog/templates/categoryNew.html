@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div id="banner" class="row">
+	<div class="col-xs-1 col-md-1"></div>
+	<div class="col-xs-11 col-md-11">
+		<h1>Create a New Category</h1>
+
+		<form action="#" method = "post">
+			<div class="form-group">
+				<label for="name">Category Name:</label>
+				<input type ="text" class="form-control" maxlength="100" name="name">
+				<p class="help-block">Name must be unique.</p>
+			</div>
+			<button type="submit" class="btn btn-default" type="submit">
+				<span aria-hidden="true"></span>Create
+			</button>
+		</form>
+	</div>
+</div>
+
+{% endblock %}
